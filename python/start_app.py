@@ -16,7 +16,7 @@ def main():
     workers = []
     p1 = Process(target=worker_process_1)
     p1.start()
-    # time.sleep(5)
+    time.sleep(5)
     p2 = Process(target=worker_process_2)
     p2.start()
 

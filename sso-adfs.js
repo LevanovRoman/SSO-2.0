@@ -4,6 +4,8 @@ const loadingEvents = new EventEmitter()
 const positioner = require('electron-traywindow-positioner');
 const path = require('path');
 var net = require('net');
+const kill = require("kill-port");
+const user_port = 8000;
 
 const appURL = "http://127.0.0.1:8000/";
 let window = null;
@@ -79,6 +81,7 @@ app.on('before-quit', function () {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    kill(user_port, "tcp");
     app.quit();
   }
 });
